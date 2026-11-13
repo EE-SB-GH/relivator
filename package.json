@@ -4,9 +4,12 @@
   "version": "1.4.6",
   "type": "module",
   "private": true,
+  "overrides": {
+    "better-call": "1.0.9"
+  },
   "scripts": {
-    "build": "next build",
-    "dev": "next dev --turbopack",
+    "build": "next build --no-lint",
+    "dev": "next dev --webpack",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "db:auth": "bun src/lib/auth-db.ts",
@@ -17,7 +20,7 @@
   },
   "dependencies": {
     "@paralleldrive/cuid2": "^2.2.2",
-    "@polar-sh/better-auth": "^0.1.1",
+    "@polar-sh/better-auth": "0.1.1",
     "@polar-sh/sdk": "^0.32.13",
     "@radix-ui/react-avatar": "^1.1.9",
     "@radix-ui/react-checkbox": "^1.3.1",
@@ -36,7 +39,7 @@
     "@uploadthing/react": "^7.3.0",
     "@vercel/speed-insights": "^1.2.0",
     "animejs": "^4.0.2",
-    "better-auth": "^1.2.7",
+    "better-auth": "1.2.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",

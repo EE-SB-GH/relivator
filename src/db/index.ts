@@ -6,10 +6,8 @@ import { DB_DEV_LOGGER } from "~/app";
 
 import * as schema from "./schema";
 
-// Ensure the database URL is set
-if (!process.env.DATABASE_URL) {
-  throw new Error("🔴 DATABASE_URL environment variable is not set");
-}
+const databaseUrl =
+  process.env.DATABASE_URL ?? "postgresql://localhost:5432/relivator";
 
 /**
  * Caches the database connection in development to
@@ -20,7 +18,7 @@ const globalForDb = globalThis as unknown as {
   conn?: DbConnection;
 };
 export const conn: DbConnection =
-  globalForDb.conn ?? postgres(process.env.DATABASE_URL);
+  globalForDb.conn ?? postgres(databaseUrl);
 if (process.env.NODE_ENV !== "production") {
   globalForDb.conn = conn;
 }

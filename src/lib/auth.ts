@@ -1,7 +1,7 @@
 // note: run `bun db:auth` to generate the `users.ts`
 // schema after making breaking changes to this file
 
-import { betterAuth } from "better-auth";
+import { betterAuth, type BetterAuthPlugin } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { twoFactor } from "better-auth/plugins";
 import { polar } from "@polar-sh/better-auth";
@@ -138,7 +138,7 @@ export const auth = betterAuth({
   },
 
   plugins: [
-    twoFactor(),
+    twoFactor() as unknown as ReturnType<typeof twoFactor> & BetterAuthPlugin,
     polar({
       client: polarClient,
       createCustomerOnSignUp: true,

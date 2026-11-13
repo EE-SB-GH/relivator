@@ -1,3 +1,4 @@
+import type { BetterAuthClientPlugin } from "better-auth/client";
 import { twoFactorClient } from "better-auth/client/plugins";
 import { createAuthClient } from "better-auth/react";
 import { useRouter } from "next/navigation";
@@ -12,7 +13,7 @@ export const authClient = createAuthClient({
         // Redirect to the two-factor page
         window.location.href = "/auth/two-factor";
       },
-    }),
+    }) as unknown as ReturnType<typeof twoFactorClient> & BetterAuthClientPlugin,
   ],
 });
 

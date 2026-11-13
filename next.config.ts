@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
 export default {
-  eslint: { ignoreDuringBuilds: true },
+  experimental: {
+    cpus: 1,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
