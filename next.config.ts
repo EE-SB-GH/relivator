@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 export default {
   experimental: {
     cpus: 1,
+    webpackBuildWorker: false,
     workerThreads: false,
   },
   typescript: {

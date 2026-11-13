@@ -471,7 +471,7 @@ export default function HomePage() {
                 >
                   <Link href="/auth/sign-up">
                     <Button
-                      className="h-12 px-8 transition-colors duration-200"
+                      className="h-12 bg-orange-500 px-8 text-white transition-colors duration-200 hover:bg-orange-600"
                       size="lg"
                     >
                       Sign Up Now
