@@ -7,7 +7,9 @@ import { DB_DEV_LOGGER } from "~/app";
 import * as schema from "./schema";
 
 const databaseUrl =
-  process.env.DATABASE_URL ?? "postgresql://localhost:5432/relivator";
+  process.env.SUPABASE_DB_URL ??
+  process.env.DATABASE_URL ??
+  "postgresql://localhost:5432/relivator";
 
 /**
  * Caches the database connection in development to
@@ -18,7 +20,7 @@ const globalForDb = globalThis as unknown as {
   conn?: DbConnection;
 };
 export const conn: DbConnection =
-  globalForDb.conn ?? postgres(databaseUrl);
+  globalForDb.conn ?? postgres(databaseUrl, { max: 1 });
 if (process.env.NODE_ENV !== "production") {
   globalForDb.conn = conn;
 }
